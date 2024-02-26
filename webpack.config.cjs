@@ -20,5 +20,5 @@ module.exports = {
       }
     ]
   },
-  mode: 'production' // Use 'development' for development
+  mode: 'production'
 };

@@ -39,7 +39,7 @@ main {
 
 .chatbot-header {
     display: flex;
-    //flex-direction: column;
+    /*flex-direction: column;*/
     gap: .6em;
 }
 
