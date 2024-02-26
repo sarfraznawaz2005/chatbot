@@ -19,7 +19,7 @@ const llm = new ChatGoogleGenerativeAI({
 	apiKey: apiKey,
 	modelName: "gemini-pro",
 	maxOutputTokens: 2048,
-	verbose: true
+	verbose: false
 });
 
 const standaloneQuestionTemplate = `Given some conversation history (if any) and a question, convert the question to a standalone question. 
@@ -83,7 +83,7 @@ async function progressConversation() {
     newHumanSpeechBubble.textContent = question
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight
     
-	const response = await chain.invoke({
+	let response = await chain.invoke({
         question: question,
         conv_history: formatConvHistory(convHistory)
     })
