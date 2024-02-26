@@ -3,11 +3,13 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 import axios from 'axios';
 import { apiKey } from '../config.js'
+import { BASE_URL } from './url.js'
+
+const fullUrl = `${BASE_URL}/data.php`;
 
 let text = '';
 
-// check if vector store already exists
-await axios.post('data.php')
+await axios.post(fullUrl)
 .then(response => {
     text = response.data.data;
 })
@@ -18,7 +20,7 @@ await axios.post('data.php')
 const textSplitter = new RecursiveCharacterTextSplitter({ 
 	chunkSize: 500,
 	separators: ["\n\n", "\n", " ", ""], // default
-	chunkOverlap: 50 // 10%
+	//chunkOverlap: 50 // 10%
 });
 
 const docs = await textSplitter.createDocuments([text]);
