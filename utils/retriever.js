@@ -20,7 +20,7 @@ await axios.post(fullUrl)
 const textSplitter = new RecursiveCharacterTextSplitter({ 
 	chunkSize: 500,
 	separators: ["\n\n", "\n", " ", ""], // default
-	//chunkOverlap: 50 // 10%
+	chunkOverlap: 0
 });
 
 const docs = await textSplitter.createDocuments([text]);
